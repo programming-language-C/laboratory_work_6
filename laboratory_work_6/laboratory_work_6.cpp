@@ -1,6 +1,7 @@
 ﻿//Определить математическое ожидание и моду для элементов целочисленной матрицы,
 //попавших в заданный интервал. Размерность матрицы не более, чем 15 * 20. Формат числа ц.
 
+#include <algorithm>
 #include <iostream>
 #include <tuple>
 #include <vector>
@@ -37,85 +38,101 @@ void createMatrx(int (*matrix)[COLUMNS])
 	}
 }
 
-//int getArrOfNumbersInRange(int (*matrix)[COLUMNS], int startInterval, int endInterval)
-//{
-//	bool isIncludedInInterval;
-//	int arrOfNumbersInRange = new;
-//	for (int row = 0; row < ROWS; row++)
-//	{
-//		for (int column = 0; column < COLUMNS; column++)
-//		{
-//			isIncludedInInterval = startInterval <= matrix[row][column] && matrix[row][column] <= endInterval;
-//			if (isIncludedInInterval)
-//				sumMatrix += matrix[row][column];
-//		}
-//	}
-//}
-
-int getSumMatrix(int (*matrix)[COLUMNS], int startInterval, int endInterval)
+vector<int> getVectorOfNumbersInRange(int (*matrix)[COLUMNS], int startInterval, int endInterval)
 {
 	bool isIncludedInInterval;
-	int sumMatrix = 0;
+	vector<int> vectorOfNumbersInRange;
+	int numberOfElementsInInterval = 0;
 	for (int row = 0; row < ROWS; row++)
 	{
 		for (int column = 0; column < COLUMNS; column++)
 		{
 			isIncludedInInterval = startInterval <= matrix[row][column] && matrix[row][column] <= endInterval;
 			if (isIncludedInInterval)
-				sumMatrix += matrix[row][column];
+			{
+				vectorOfNumbersInRange.push_back(matrix[row][column]);
+				numberOfElementsInInterval += 1;
+			}
 		}
 	}
-	return sumMatrix;
+	//задаёт размерность вектора
+	vectorOfNumbersInRange.reserve(numberOfElementsInInterval);
+	return vectorOfNumbersInRange;
 }
 
-float getMathExpectation(int sum)
+
+int getSumVectorOfNumbersInRange(vector<int> vectorOfNumbersInRange)
 {
-	int numberOfNumbers = ROWS * COLUMNS,
-	    mathExpectation = sum / numberOfNumbers;
+	int vectorSize = vectorOfNumbersInRange.size(),
+	    sumVectorOfNumbersInRange = 0;
+	for (int i = 0; i < vectorSize; i++)
+	{
+		sumVectorOfNumbersInRange += vectorOfNumbersInRange.at(i);
+	}
+	return sumVectorOfNumbersInRange;
+}
+
+float getMathExpectation(vector<int> vectorOfNumbersInRange)
+{
+	int sum = getSumVectorOfNumbersInRange(vectorOfNumbersInRange),
+	    numberOfNumbers = ROWS * COLUMNS;
+	double mathExpectation = (float)sum / (float)numberOfNumbers;
 	return mathExpectation;
 }
 
-//void createNumberRepetitionsNumbers(int arrOfNumberOfRepeatedNumbers)
+//void countNumberOfDuplicateNumbers(int arrOfNumberOfRepeatedNumbers)
 //{
 //	for (int i = 0; i <= NUMBEROFNUMBERS; i++)
 //		arrOfNumberOfRepeatedNumbers;
 //}
 
-//int getFashion(int* matrix, int a, int b)
-//{
-//}
+int getFashion(vector<int> vectorOfNumbersInRange)
+{
+	int sizeVectorOfNumbersInRange = vectorOfNumbersInRange.size(),
+	    j;
+	vector<int> vectorCountNumberOfDuplicateNumbers(NUMBEROFNUMBERS);
+	for (int i = 0; i < sizeVectorOfNumbersInRange; i++)
+	{
+		for (int j = 1; j <= NUMBEROFNUMBERS; j++)
+		{
+			if (j == vectorOfNumbersInRange.at(i))
+			{
+				vectorCountNumberOfDuplicateNumbers[j] += 1;
+				break;
+			}
+		}
+	}
+	int fashion = max_element(vectorCountNumberOfDuplicateNumbers.begin(), vectorCountNumberOfDuplicateNumbers.end());
+	return fashion;
+}
 
-int main()
+void main()
 {
 	setlocale(LC_ALL, "ru");
 
-	vector<int> ivector;
-	for (int i = 0; i < COLUMNS; i++)
-	{
-		ivector.push_back(i);
-	}
-	ivector.reserve(COLUMNS);
-
-	ivector.push_back(12);
-	/*int matrix[ROWS][COLUMNS],
+	int matrix[ROWS][COLUMNS],
 	    arrOfNumberOfRepeatedNumbers[NUMBEROFNUMBERS],
 	    startInterval,
 	    endInterval,
-	    sumMatrix;
+	    sumMatrix,
+	    fashion;
+	vector<int> vectorOfNumbersInRange;
 	float mathExpectation;
+
 	createMatrx(matrix);
 	tie(startInterval, endInterval) = enterInterval();
-	sumMatrix = getSumMatrix(matrix, startInterval, endInterval);
-	mathExpectation = getMathExpectation(sumMatrix);*/
-	//createNumberRepetitionsNumbers();
+	vectorOfNumbersInRange = getVectorOfNumbersInRange(matrix, startInterval, endInterval);
+	mathExpectation = getMathExpectation(vectorOfNumbersInRange);
+	fashion = getFashion(vectorOfNumbersInRange);
+	countNumberOfDuplicateNumbers();
 
-	//for (int row = 0; row < ROWS; row++)
-	//{
-	//	for (int column = 0; column < COLUMNS; column++)
-	//	{
-	//		printf("%d, ", matrix[row][column]);
-	//	}
-	//}
+	/*for (int row = 0; row < ROWS; row++)
+	{
+		for (int column = 0; column < COLUMNS; column++)
+		{
+			printf("%d, ", matrix[row][column]);
+		}
+	}*/
 }
 
 //tuple<int, int> enterSizeOfMatrix()
