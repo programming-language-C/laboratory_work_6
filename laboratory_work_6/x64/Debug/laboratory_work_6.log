@@ -1,5 +1,4 @@
 ﻿  laboratory_work_6.cpp
-D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(45,41): warning C4804: <=: небезопасное использование типа "bool" в операции
-D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(101,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(103,29): warning C4101: randomNumber: неиспользованная локальная переменная
+D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(30,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(75,9): warning C4244: return: преобразование "int" в "float", возможна потеря данных
   laboratory_work_6.vcxproj -> D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\x64\Debug\laboratory_work_6.exe
