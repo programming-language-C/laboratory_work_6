@@ -7,21 +7,58 @@
 #include <vector>
 using namespace std;
 
+const int ROWS = 4,
+          COLUMNS = 4,
+          NUMBEROFNUMBERS = 9;
+
 //tuple<int, int> enterSizeOfMatrix();
 tuple<int, int> enterInterval();
-void createMatrix(int matrix);
+void createMatrx(int (*matrix)[COLUMNS]);
+vector<int> getVectorOfNumbersInRange(int (*matrix)[COLUMNS], int startInterval, int endInterval);
+float getMathExpectation(vector<int> vectorOfNumbersInRange);
+int getSumVectorOfNumbersInRange(vector<int> vectorOfNumbersInRange);
+int getFashion(vector<int> vectorOfNumbersInRange);
 
-const int ROWS = 5,
-          COLUMNS = 7,
-          NUMBEROFNUMBERS = 9;
+
+void main()
+{
+	setlocale(LC_ALL, "ru");
+
+	int matrix[ROWS][COLUMNS],
+	    arrOfNumberOfRepeatedNumbers[NUMBEROFNUMBERS],
+	    startInterval,
+	    endInterval,
+	    sumMatrix,
+	    fashion;
+	vector<int> vectorOfNumbersInRange;
+	float mathExpectation;
+
+	createMatrx(matrix);
+	tie(startInterval, endInterval) = enterInterval();
+	vectorOfNumbersInRange = getVectorOfNumbersInRange(matrix, startInterval, endInterval);
+	mathExpectation = getMathExpectation(vectorOfNumbersInRange);
+	fashion = getFashion(vectorOfNumbersInRange);
+
+	printf("Математическое ожидание = %f\n", mathExpectation);
+	printf("Мода = %d\n", fashion);
+	printf("Матрица %d x %d\n", ROWS, COLUMNS);
+	for (int row = 0; row < ROWS; row++)
+	{
+		for (int column = 0; column < COLUMNS; column++)
+		{
+			printf("%d, ", matrix[row][column]);
+		}
+		printf("\n");
+	}
+}
 
 tuple<int, int> enterInterval()
 {
 	int startInterval, endInterval;
 	printf("Введите интервал в котором должен производится поиск математического ожидания и моды\n");
-	printf("a: ");
+	printf("Начальный интервал: ");
 	scanf_s("%d", &startInterval);
-	printf("b: ");
+	printf("Конечный интервал: ");
 	scanf_s("%d", &endInterval);
 	return make_tuple(startInterval, endInterval);
 }
@@ -60,11 +97,18 @@ vector<int> getVectorOfNumbersInRange(int (*matrix)[COLUMNS], int startInterval,
 	return vectorOfNumbersInRange;
 }
 
+float getMathExpectation(vector<int> vectorOfNumbersInRange)
+{
+	int sum = getSumVectorOfNumbersInRange(vectorOfNumbersInRange),
+	    numberOfNumbers = ROWS * COLUMNS;
+	float mathExpectation = (float)sum / (float)numberOfNumbers;
+	return mathExpectation;
+}
 
 int getSumVectorOfNumbersInRange(vector<int> vectorOfNumbersInRange)
 {
 	int vectorSize = vectorOfNumbersInRange.size(),
-	    sumVectorOfNumbersInRange = 0;
+		sumVectorOfNumbersInRange = 0;
 	for (int i = 0; i < vectorSize; i++)
 	{
 		sumVectorOfNumbersInRange += vectorOfNumbersInRange.at(i);
@@ -72,24 +116,11 @@ int getSumVectorOfNumbersInRange(vector<int> vectorOfNumbersInRange)
 	return sumVectorOfNumbersInRange;
 }
 
-float getMathExpectation(vector<int> vectorOfNumbersInRange)
-{
-	int sum = getSumVectorOfNumbersInRange(vectorOfNumbersInRange),
-	    numberOfNumbers = ROWS * COLUMNS;
-	double mathExpectation = (float)sum / (float)numberOfNumbers;
-	return mathExpectation;
-}
-
-//void countNumberOfDuplicateNumbers(int arrOfNumberOfRepeatedNumbers)
-//{
-//	for (int i = 0; i <= NUMBEROFNUMBERS; i++)
-//		arrOfNumberOfRepeatedNumbers;
-//}
-
 int getFashion(vector<int> vectorOfNumbersInRange)
 {
 	int sizeVectorOfNumbersInRange = vectorOfNumbersInRange.size(),
-	    j;
+	    j,
+	    fashion;
 	vector<int> vectorCountNumberOfDuplicateNumbers(NUMBEROFNUMBERS);
 	for (int i = 0; i < sizeVectorOfNumbersInRange; i++)
 	{
@@ -102,37 +133,16 @@ int getFashion(vector<int> vectorOfNumbersInRange)
 			}
 		}
 	}
-	int fashion = max_element(vectorCountNumberOfDuplicateNumbers.begin(), vectorCountNumberOfDuplicateNumbers.end());
-	return fashion;
-}
+	auto vectorBegin = vectorCountNumberOfDuplicateNumbers.begin(),
+	     vectorEnd = vectorCountNumberOfDuplicateNumbers.end();
+	int maxNumberOfRepeatingNumbers = *std::max_element(vectorBegin, vectorEnd);
+	vector<int>::iterator itr = find(vectorBegin, vectorEnd, maxNumberOfRepeatingNumbers);
 
-void main()
-{
-	setlocale(LC_ALL, "ru");
-
-	int matrix[ROWS][COLUMNS],
-	    arrOfNumberOfRepeatedNumbers[NUMBEROFNUMBERS],
-	    startInterval,
-	    endInterval,
-	    sumMatrix,
-	    fashion;
-	vector<int> vectorOfNumbersInRange;
-	float mathExpectation;
-
-	createMatrx(matrix);
-	tie(startInterval, endInterval) = enterInterval();
-	vectorOfNumbersInRange = getVectorOfNumbersInRange(matrix, startInterval, endInterval);
-	mathExpectation = getMathExpectation(vectorOfNumbersInRange);
-	fashion = getFashion(vectorOfNumbersInRange);
-	countNumberOfDuplicateNumbers();
-
-	/*for (int row = 0; row < ROWS; row++)
+	if (itr != vectorEnd)
 	{
-		for (int column = 0; column < COLUMNS; column++)
-		{
-			printf("%d, ", matrix[row][column]);
-		}
-	}*/
+		fashion = distance(vectorBegin, itr);
+	}
+	return fashion;
 }
 
 //tuple<int, int> enterSizeOfMatrix()
