@@ -21,7 +21,7 @@ int getFashion(vector<int> vectorOfNumbersInRange);
 void main()
 {
 	setlocale(LC_ALL, "ru");
-	
+
 	int matrix[ROWS][COLUMNS],
 	    arrOfNumberOfRepeatedNumbers[NUMBEROFNUMBERS],
 	    startInterval,
@@ -98,7 +98,7 @@ vector<int> getVectorOfNumbersInRange(int (*matrix)[COLUMNS], int startInterval,
 float getMathExpectation(vector<int> vectorOfNumbersInRange)
 {
 	int sum = getSumVectorOfNumbersInRange(vectorOfNumbersInRange),
-		vectorSize = vectorOfNumbersInRange.size();
+	    vectorSize = vectorOfNumbersInRange.size();
 	float mathExpectation = (float)sum / (float)vectorSize;
 	return mathExpectation;
 }
@@ -106,7 +106,7 @@ float getMathExpectation(vector<int> vectorOfNumbersInRange)
 int getSumVectorOfNumbersInRange(vector<int> vectorOfNumbersInRange)
 {
 	int vectorSize = vectorOfNumbersInRange.size(),
-		sumVectorOfNumbersInRange = 0;
+	    sumVectorOfNumbersInRange = 0;
 	for (int i = 0; i < vectorSize; i++)
 	{
 		sumVectorOfNumbersInRange += vectorOfNumbersInRange.at(i);
