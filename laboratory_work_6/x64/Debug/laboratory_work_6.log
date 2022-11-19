@@ -1,10 +1,11 @@
 ﻿  laboratory_work_6.cpp
-D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(24,1): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
-D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(31,6): warning C4101: sumMatrix: неиспользованная локальная переменная
-D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(28,6): warning C4101: arrOfNumberOfRepeatedNumbers: неиспользованная локальная переменная
-D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(68,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(102,48): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(121,64): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(143,21): warning C4244: =: преобразование "__int64" в "int", возможна потеря данных
-D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(122,6): warning C4101: j: неиспользованная локальная переменная
+D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(22,1): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
+D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(29,6): warning C4101: sumMatrix: неиспользованная локальная переменная
+D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(26,6): warning C4101: arrOfNumberOfRepeatedNumbers: неиспользованная локальная переменная
+D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(66,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(101,45): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(108,48): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(119,64): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(141,21): warning C4244: =: преобразование "__int64" в "int", возможна потеря данных
+D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(120,6): warning C4101: j: неиспользованная локальная переменная
   laboratory_work_6.vcxproj -> D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\x64\Debug\laboratory_work_6.exe

@@ -11,7 +11,6 @@ const int ROWS = 4,
           COLUMNS = 4,
           NUMBEROFNUMBERS = 9;
 
-//tuple<int, int> enterSizeOfMatrix();
 tuple<int, int> enterInterval();
 void createMatrx(int (*matrix)[COLUMNS]);
 vector<int> getVectorOfNumbersInRange(int (*matrix)[COLUMNS], int startInterval, int endInterval);
@@ -19,11 +18,10 @@ float getMathExpectation(vector<int> vectorOfNumbersInRange);
 int getSumVectorOfNumbersInRange(vector<int> vectorOfNumbersInRange);
 int getFashion(vector<int> vectorOfNumbersInRange);
 
-
 void main()
 {
 	setlocale(LC_ALL, "ru");
-
+	
 	int matrix[ROWS][COLUMNS],
 	    arrOfNumberOfRepeatedNumbers[NUMBEROFNUMBERS],
 	    startInterval,
@@ -39,14 +37,14 @@ void main()
 	mathExpectation = getMathExpectation(vectorOfNumbersInRange);
 	fashion = getFashion(vectorOfNumbersInRange);
 
-	printf("Математическое ожидание = %f\n", mathExpectation);
+	printf("Математическое ожидание = %.2f\n", mathExpectation);
 	printf("Мода = %d\n", fashion);
 	printf("Матрица %d x %d\n", ROWS, COLUMNS);
 	for (int row = 0; row < ROWS; row++)
 	{
 		for (int column = 0; column < COLUMNS; column++)
 		{
-			printf("%d, ", matrix[row][column]);
+			printf("%d ", matrix[row][column]);
 		}
 		printf("\n");
 	}
@@ -100,8 +98,8 @@ vector<int> getVectorOfNumbersInRange(int (*matrix)[COLUMNS], int startInterval,
 float getMathExpectation(vector<int> vectorOfNumbersInRange)
 {
 	int sum = getSumVectorOfNumbersInRange(vectorOfNumbersInRange),
-	    numberOfNumbers = ROWS * COLUMNS;
-	float mathExpectation = (float)sum / (float)numberOfNumbers;
+		vectorSize = vectorOfNumbersInRange.size();
+	float mathExpectation = (float)sum / (float)vectorSize;
 	return mathExpectation;
 }
 
@@ -144,27 +142,3 @@ int getFashion(vector<int> vectorOfNumbersInRange)
 	}
 	return fashion;
 }
-
-//tuple<int, int> enterSizeOfMatrix()
-//{
-//	int rows, columns;
-//
-//	while (true)
-//	{
-//		cout << "Введите количество строк в матрице (не больше 15): ";
-//		cin >> rows;
-//
-//		cout << "Введите количество столбцов в матрице (не больше 20): ";
-//		cin >> columns;
-//
-//		bool isCorrectMatrix = rows <= 15 && columns <= 20;
-//
-//		if (isCorrectMatrix)
-//			break;
-//
-//		cout << "Ошибка: количество строк в матрице не должно превышать 15 и количество столбцов не должно превышать 20"
-//			<< endl;
-//	}
-//
-//	return make_tuple(rows, columns);
-//}
