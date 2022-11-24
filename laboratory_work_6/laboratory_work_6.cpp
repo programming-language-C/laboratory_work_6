@@ -7,8 +7,8 @@
 #include <vector>
 using namespace std;
 
-const int ROWS = 4,
-          COLUMNS = 4,
+const int ROWS = 15,
+          COLUMNS = 12,
           NUMBEROFNUMBERS = 9;
 
 tuple<int, int> enterInterval();
@@ -37,8 +37,6 @@ void main()
 	mathExpectation = getMathExpectation(vectorOfNumbersInRange);
 	fashion = getFashion(vectorOfNumbersInRange);
 
-	printf("Математическое ожидание = %.2f\n", mathExpectation);
-	printf("Мода = %d\n", fashion);
 	printf("Матрица %d x %d\n", ROWS, COLUMNS);
 	for (int row = 0; row < ROWS; row++)
 	{
@@ -48,16 +46,30 @@ void main()
 		}
 		printf("\n");
 	}
+	printf("Числа находящиеся в интервале: ");
+	//ostream_iterator — это то, что называется адаптером итератора.
+	//Он шаблонизирован над типом для вывода в поток(в данном случае int).
+	//cout(он же консольный вывод) — это поток, в который мы хотим писать,
+	//а символ пробела(" ") — это то, что мы хотим напечатать между каждым элементом, хранящимся в векторе.
+	copy(vectorOfNumbersInRange.begin(), vectorOfNumbersInRange.end(), ostream_iterator<int>(cout, " "));
+	printf("\nМатематическое ожидание = %.2f\n", mathExpectation);
+	printf("Мода = %d\n", fashion);
 }
 
 tuple<int, int> enterInterval()
 {
 	int startInterval, endInterval;
-	printf("Введите интервал в котором должен производится поиск математического ожидания и моды\n");
-	printf("Начальный интервал: ");
-	scanf_s("%d", &startInterval);
-	printf("Конечный интервал: ");
-	scanf_s("%d", &endInterval);
+	while (true)
+	{
+		printf("Введите интервал в котором должен производится поиск математического ожидания и моды\n");
+		printf("Начальный интервал: ");
+		scanf_s("%d", &startInterval);
+		printf("Конечный интервал: ");
+		scanf_s("%d", &endInterval);
+		if ((0 <= startInterval && startInterval <= 9) && (0 <= endInterval && endInterval <= 9))
+			break;
+		printf("Ошибка! Интервал можно выбрать в диапазоне от 0 до 9\n");
+	}
 	return make_tuple(startInterval, endInterval);
 }
 
