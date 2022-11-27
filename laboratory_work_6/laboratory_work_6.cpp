@@ -9,7 +9,7 @@ using namespace std;
 
 const int ROWS = 15,
           COLUMNS = 12,
-          NUMBEROFNUMBERS = 9;
+          NUMBEROFNUMBERS = 10;
 
 tuple<int, int> enterInterval();
 void createMatrx(int (*matrix)[COLUMNS]);
@@ -37,7 +37,7 @@ void main()
 	mathExpectation = getMathExpectation(vectorOfNumbersInRange);
 	fashion = getFashion(vectorOfNumbersInRange);
 
-	printf("Матрица %d x %d\n", ROWS, COLUMNS);
+	printf("матрица %d x %d\n", ROWS, COLUMNS);
 	for (int row = 0; row < ROWS; row++)
 	{
 		for (int column = 0; column < COLUMNS; column++)
@@ -46,14 +46,14 @@ void main()
 		}
 		printf("\n");
 	}
-	printf("Числа находящиеся в интервале: ");
+	printf("числа находящиеся в интервале: ");
 	//ostream_iterator — это то, что называется адаптером итератора.
-	//Он шаблонизирован над типом для вывода в поток(в данном случае int).
+	//он шаблонизирован над типом для вывода в поток(в данном случае int).
 	//cout(он же консольный вывод) — это поток, в который мы хотим писать,
 	//а символ пробела(" ") — это то, что мы хотим напечатать между каждым элементом, хранящимся в векторе.
 	copy(vectorOfNumbersInRange.begin(), vectorOfNumbersInRange.end(), ostream_iterator<int>(cout, " "));
-	printf("\nМатематическое ожидание = %.2f\n", mathExpectation);
-	printf("Мода = %d\n", fashion);
+	printf("\nматематическое ожидание = %.2f\n", mathExpectation);
+	printf("мода = %d\n", fashion);
 }
 
 tuple<int, int> enterInterval()
@@ -77,12 +77,8 @@ void createMatrx(int (*matrix)[COLUMNS])
 {
 	srand(time(NULL)); //рандомизация - инициализация ДСЧ
 	for (int row = 0; row < ROWS; row++)
-	{
 		for (int column = 0; column < COLUMNS; column++)
-		{
 			matrix[row][column] = rand() % 10;
-		}
-	}
 }
 
 vector<int> getVectorOfNumbersInRange(int (*matrix)[COLUMNS], int startInterval, int endInterval)
@@ -91,7 +87,6 @@ vector<int> getVectorOfNumbersInRange(int (*matrix)[COLUMNS], int startInterval,
 	vector<int> vectorOfNumbersInRange;
 	int numberOfElementsInInterval = 0;
 	for (int row = 0; row < ROWS; row++)
-	{
 		for (int column = 0; column < COLUMNS; column++)
 		{
 			isIncludedInInterval = startInterval <= matrix[row][column] && matrix[row][column] <= endInterval;
@@ -101,7 +96,6 @@ vector<int> getVectorOfNumbersInRange(int (*matrix)[COLUMNS], int startInterval,
 				numberOfElementsInInterval += 1;
 			}
 		}
-	}
 	//задаёт размерность вектора
 	vectorOfNumbersInRange.reserve(numberOfElementsInInterval);
 	return vectorOfNumbersInRange;
@@ -120,37 +114,27 @@ int getSumVectorOfNumbersInRange(vector<int> vectorOfNumbersInRange)
 	int vectorSize = vectorOfNumbersInRange.size(),
 	    sumVectorOfNumbersInRange = 0;
 	for (int i = 0; i < vectorSize; i++)
-	{
 		sumVectorOfNumbersInRange += vectorOfNumbersInRange.at(i);
-	}
 	return sumVectorOfNumbersInRange;
 }
 
 int getFashion(vector<int> vectorOfNumbersInRange)
 {
-	int sizeVectorOfNumbersInRange = vectorOfNumbersInRange.size(),
-	    j,
-	    fashion;
+	int sizeVectorOfNumbersInRange = vectorOfNumbersInRange.size(), fashion;
 	vector<int> vectorCountNumberOfDuplicateNumbers(NUMBEROFNUMBERS);
 	for (int i = 0; i < sizeVectorOfNumbersInRange; i++)
-	{
-		for (int j = 1; j <= NUMBEROFNUMBERS; j++)
-		{
+		for (int j = 0; j < NUMBEROFNUMBERS; j++)
 			if (j == vectorOfNumbersInRange.at(i))
 			{
 				vectorCountNumberOfDuplicateNumbers[j] += 1;
 				break;
 			}
-		}
-	}
 	auto vectorBegin = vectorCountNumberOfDuplicateNumbers.begin(),
 	     vectorEnd = vectorCountNumberOfDuplicateNumbers.end();
 	int maxNumberOfRepeatingNumbers = *std::max_element(vectorBegin, vectorEnd);
 	vector<int>::iterator itr = find(vectorBegin, vectorEnd, maxNumberOfRepeatingNumbers);
 
 	if (itr != vectorEnd)
-	{
 		fashion = distance(vectorBegin, itr);
-	}
 	return fashion;
 }

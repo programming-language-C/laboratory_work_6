@@ -3,9 +3,8 @@ D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_
 D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(29,6): warning C4101: sumMatrix: неиспользованная локальная переменная
 D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(26,6): warning C4101: arrOfNumberOfRepeatedNumbers: неиспользованная локальная переменная
 D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(78,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(113,48): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(120,48): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(131,64): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(153,21): warning C4244: =: преобразование "__int64" в "int", возможна потеря данных
-D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(132,6): warning C4101: j: неиспользованная локальная переменная
+D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(107,48): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(114,48): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(123,64): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\laboratory_work_6\laboratory_work_6.cpp(138,21): warning C4244: =: преобразование "__int64" в "int", возможна потеря данных
   laboratory_work_6.vcxproj -> D:\Users\maks2\Desktop\Programming\C++\mgutum\laboratory_work_6\x64\Debug\laboratory_work_6.exe
